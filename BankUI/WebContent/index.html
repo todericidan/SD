@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="angularjs-demo">
+<head lang="en">
+<meta charset="UTF-8">
+<title>AngularJS DEMO</title>
+
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
+	rel="stylesheet">
+</head>
+
+<body>
+	<div class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				
+				<a class="navbar-brand" href="#/login">Login</a>
+			</div>
+		</div>
+	</div>
+	<br />
+	<br />
+	<br />
+	<br />
+	<div class="container">
+	<div ng-view=""></div>
+	</div>
+
+	<!-- LIBS -->
+	<script src="assets/js/angular.min.js"></script>
+	<script src="assets/js/angular-route.min.js"></script>
+
+	<!-- APP -->
+	<script src="app/config/app.js"></script>
+	<script src="app/config/config.js"></script>
+	<!-- CONTROLLERS -->
+	<script src="app/controllers/navControllers.js"></script>
+	<script src="app/controllers/userControllers.js"></script>
+	<!-- SERVICES -->
+	<script src="app/services/userService.js"></script>
+	<script src="app/services/logService.js"></script>
+</body>
+</html>

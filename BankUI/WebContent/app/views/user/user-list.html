@@ -1,0 +1,76 @@
+<div>
+	<h2>Users</h2>
+
+	<div ng-if="users.length == 0">
+		<div class="alert alert-info" role="alert">Loading...</div>
+	</div>
+
+
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Username</th>
+				<th>AdminRights</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="user in allUsersCtrl.users">
+				<td>{{user.username}}</td>
+				<td>{{user.isAdmin}}</td>
+				<td><a class="btn btn-primary" href="#/users/{{user.username}}">Details</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<a class="btn btn-primary" href="#/user/register">Add</a>
+	</td> <br>
+	<p>
+		<label>Username:</label> <input type="text" placeholder="Username"
+			ng-model=allUsersCtrl.username> </input>
+	</p>
+
+	<br>
+
+	<p>
+		<label>StartDate:</label> <input type="text" placeholder="YYYY-MM-DD"
+			ng-model=allUsersCtrl.startdate> </input>
+	</p>
+
+	<br>
+
+	<p>
+		<label>StopDate:</label> <input type="text" placeholder="YYYY-MM-DD"
+			ng-model=allUsersCtrl.stopdate> </input>
+	</p>
+
+	<br> <a class="btn btn-primary" ng-click=allUsersCtrl.searchLogs()>FetchLogs</a>
+	<br>
+
+	<div>
+		<table ng-table="logsTable" class="table table-hover" ng-if="allUsersCtrl.showLogs">
+			<thead>
+				<tr>
+					<th>Username</th>
+					<th>Time</th>
+					<th>Description</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="log in allUsersCtrl.logs">
+					<td>{{log.username}}</td>
+					<td>{{log.logTime}}</td>
+					<td>{{log.logDescription}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	
+	<div>
+	<p style="color:red;" ng-if="allUsersCtrl.showLogAlert">
+	 No logs 
+	</p>
+	</div>
+
+</div>

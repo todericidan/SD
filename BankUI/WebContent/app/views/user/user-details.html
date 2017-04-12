@@ -1,0 +1,20 @@
+<div>
+	<h2>Employee's User Details</h2>
+
+	<p><label>Username:</label> {{userCtrl.user.username}} </p>
+	<p><label>AdminRights:</label> {{userCtrl.user.isAdmin}} </p>
+	<a class="btn btn-primary" ng-click = userCtrl.deleteAction()>Delete</a></td>
+	<br>
+	<br>
+	
+	<p><label>NewPassword:</label>
+	<input type="text" placeholder="password" ng-model=userCtrl.user.password> </input> 
+	</p>
+	<br>
+	<p><label>NewAdminRights:</label>
+	<input type="text" placeholder={{userCtrl.user.isAdmin}} ng-model=userCtrl.user.isAdmin></input>
+	</p>
+	<br>
+	<a class="btn btn-primary" ng-click = userCtrl.updateAction()>Update</a>
+	<a class="btn btn-primary" href="#/users">Back</a>
+</div>

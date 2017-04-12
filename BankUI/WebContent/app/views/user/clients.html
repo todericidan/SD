@@ -1,0 +1,37 @@
+<div>
+	<h2>Clients</h2>
+
+	<div ng-if="clients.length == 0">
+		<div class="alert alert-info" role="alert">Loading...</div>
+	</div>
+
+
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>SSN</th>
+				<th>Firstname</th>
+				<th>Lastname</th>
+				<th>IdentityCardNumber</th>
+				<th>Address</th>
+				<th>Email</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="client in allClientsCtrl.clients">
+				<td>{{client.ssn}}</td>
+				<td>{{client.firstName}}</td>
+				<td>{{client.lastName}}</td>
+				<td>{{client.identityCardNumber}}</td>
+				<td>{{client.address}}</td>
+				<td>{{client.email}}</td>
+				<td><a class="btn btn-primary" href="#/clients/{{client.ssn}}">Details</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<a class="btn btn-primary" href="#/client/register">Add</a>
+	</td> <br> 
+
+
+
+</div>

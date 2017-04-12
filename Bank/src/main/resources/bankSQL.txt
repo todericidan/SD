@@ -1,0 +1,76 @@
+CREATE SCHEMA bank;
+
+
+CREATE TABLE bank.employee(
+username VARCHAR(45) NOT NULL,
+password VARCHAR(45) NOT NULL,
+is_admin INT NOT NULL,
+PRIMARY KEY (username));
+
+
+CREATE TABLE bank.clients(
+ssn VARCHAR(13) NOT NULL,
+firstname VARCHAR(45) NOT NULL,
+lastname VARCHAR(45) NOT NULL,
+identity_card_number VARCHAR(45) NOT NULL,
+address VARCHAR(45) NOT NULL,
+email VARCHAR(45) NOT NULL,
+PRIMARY KEY (SSN));
+
+
+CREATE TABLE bank.accounts(
+account_id INT NOT NULL,
+client_ssn VARCHAR(45) NOT NULL,
+account_type VARCHAR(45) NOT NULL,
+date_of_creation DATETIME NOT NULL,
+balance FLOAT NOT NULL,
+PRIMARY KEY (account_id));
+
+
+CREATE TABLE bank.transactions(
+transaction_id INT NOT NULL,
+account_id INT NOT NULL,
+creation_time DATETIME NOT NULL,
+type_of_transaction VARCHAR(45) NOT NULL,
+amount FLOAT NOT NULL,
+initial_balance FLOAT NOT NULL,
+closing_balance FLOAT NOT NULL,
+transaction_description VARCHAR(45),
+PRIMARY KEY (transaction_id));
+
+CREATE TABLE bank.loggs (
+username VARCHAR(45) NOT NULL,
+log_time DATETIME NOT NULL,
+log_description VARCHAR(45) NOT NULL,
+PRIMARY KEY (username,log_time));
+
+
+ALTER TABLE bank.accounts
+ADD INDEX client_FK_idx (client_ssn ASC);
+
+ALTER TABLE bank.accounts
+ADD CONSTRAINT client_FK
+FOREIGN KEY (client_ssn)
+REFERENCES bank.clients (SSN)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+
+ALTER TABLE bank.loggs
+ADD INDEX log_idx 
+(log_time ASC);
+ADD INDEX employee_idx 
+(username ASC);
+
+
+ALTER TABLE bank.transactions
+ADD INDEX account_FK_idx 
+(account_id ASC);
+
+
+ALTER TABLE bank.transactions
+ADD CONSTRAINT account_FK
+FOREIGN KEY (account_id)
+REFERENCES bank.accounts (account_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;

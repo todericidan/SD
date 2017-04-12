@@ -1,0 +1,105 @@
+<div>
+	<h2>Client's Details</h2>
+
+	<p>
+		<label>Name:</label> {{clientCtrl.client.firstName}} {{clientCtrl.client.lastName}} 
+	</p>
+	
+	<p>
+		<label>SSN:</label> {{clientCtrl.client.ssn}} 
+	</p>
+	
+	<p>
+		<label>IDCardNb:</label> {{clientCtrl.client.identityCardNumber}} 
+	</p>
+	
+	<p>
+		<label>Address:</label> {{clientCtrl.client.address}} 
+	</p>
+	
+	<p>
+		<label>Email:</label> {{clientCtrl.client.email}} 
+	</p>
+	<br>
+	<br>
+	<div ng-if="clients.length == 0">
+		<div class="alert alert-info" role="alert">Loading...</div>
+	</div>
+
+<h2>Transactions</h2>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Type</th>
+				<th>Balance</th>
+				<th>DateOfCreation</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="account in clientCtrl.client.accountList">
+				<td>{{account.accountId}}</td>
+				<td>{{account.accountType}}</td>
+				<td>{{account.balance}}</td>
+				<td>{{account.dateOfCreation}}</td>
+				<td><a class="btn btn-primary" href="#/account/{{account.accountId}}">Details</a></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<br>
+	<br>
+	
+	
+	<a class="btn btn-primary" href="#/client/{{clientCtrl.client.ssn}}/addAccount">AddNewAccount</a>
+	
+	
+	
+	
+	
+	<a class="btn btn-primary" ng-click=clientCtrl.deleteAction()>Delete</a>
+	
+	<a class="btn btn-primary" href="#/clients">Back</a>
+	<br> <br>
+	
+	<br> <br>
+
+	<div>
+		
+
+		<p>
+			New Firsname:<input type="text" placeholder="firstname"
+				ng-model=clientCtrl.client.firstName> </input>
+		</p>
+		<br>
+
+		<p>
+			New Lastname:<input type="text" placeholder="lastname"
+				ng-model=clientCtrl.client.lastName> </input>
+		</p>
+		<br>
+
+		<p>
+			New IDCardNumber:<input type="text" placeholder="serie"
+				ng-model=clientCtrl.client.identityCardNumber> </input>
+		</p>
+		<br>
+
+		<p>
+			New Address:<input type="text" placeholder="address"
+				ng-model=clientCtrl.client.address> </input>
+		</p>
+		<br>
+
+		<p>
+			New Email:<input type="text" placeholder="email"
+				ng-model=clientCtrl.client.email> </input>
+		</p>
+		<br>
+
+	<a class="btn btn-primary" ng-click=clientCtrl.updateAction()>Update</a>
+
+	</div>
+	
+	
+</div>

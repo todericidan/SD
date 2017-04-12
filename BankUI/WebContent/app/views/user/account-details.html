@@ -1,0 +1,141 @@
+<div>
+	<h2>Account's Details</h2>
+
+	<p>
+		<label>ID:</label> {{accountCtrl.account.accountId}}
+	</p>
+
+	<p>
+		<label>Type:</label> {{accountCtrl.account.accountType}}
+	</p>
+
+	<p>
+		<label>Balance:</label> {{accountCtrl.account.balance}}
+	</p>
+
+	<p>
+		<label>CreationDate:</label> {{accountCtrl.account.dateOfCreation}}
+	</p>
+	<br> <a class="btn btn-primary"
+		ng-click=accountCtrl.deleteAction()>DeleteAccount</a> <br> <br>
+
+	<a class="btn btn-primary" href="#/clients">Back</a> <br>
+
+
+	<div ng-if="transactions.length == 0">
+		<div class="alert alert-info" role="alert">Loading...</div>
+	</div>
+
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>CreationTime</th>
+				<th>Type</th>
+				<th>Amount</th>
+				<th>InitialBalance</th>
+				<th>ClosingBalance</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="transaction in accountCtrl.transactions">
+				<td>{{transaction.transactionID}}</td>
+				<td>{{transaction.creationTime}}</td>
+				<td>{{transaction.operationType}}</td>
+				<td>{{transaction.amount}}</td>
+				<td>{{transaction.initialBalance}}</td>
+				<td>{{transaction.closingBalance}}</td>
+				<td>{{transaction.description}}</td>
+
+			</tr>
+		</tbody>
+	</table>
+
+
+
+	<br> <br>
+	<div>
+
+
+		<p>
+			New Balance:<input type="text" placeholder="balance"
+				ng-model=accountCtrl.account.balance> </input>
+		</p>
+
+		<br> <a class="btn btn-primary"
+			ng-click=accountCtrl.updateAction()>Update</a>
+
+	</div>
+
+	<div>
+		<h1>New Transfer</h1>
+		<p>
+			AccountIdTo:<input type="text" placeholder="id2"
+				ng-model=accountCtrl.id2> </input>
+		</p>
+		<p>
+			Sum:<input type="text" placeholder="sum"
+				ng-model=accountCtrl.newTransfer.amount> </input>
+		</p>
+
+		<a class="btn btn-primary" ng-click=accountCtrl.transfer()>Transfer</a>
+
+	</div>
+	<div>
+		<h1>New Utility Bill</h1>
+		<p>
+			Sum:<input type="text" placeholder="sum"
+				ng-model=accountCtrl.newBill.amount> </input>
+		</p>
+		<p>
+			Utilty:<input type="text" placeholder="utility"
+				ng-model=accountCtrl.newBill.description> </input>
+		</p>
+
+		<a class="btn btn-primary" ng-click=accountCtrl.payBill()>PayBill</a>
+		
+
+	</div>
+	
+	<div>
+		<h1>New Single Transaction</h1>
+		
+		<p>
+			Sum:<input type="text" placeholder="sum"
+				ng-model=accountCtrl.newTrans.amount> </input>
+		</p>
+	<!--  	
+		<p>
+			Utilty:<input type="text" placeholder="DEPOSIT/WITHDRAWAL"
+				ng-model=accountCtrl.newTrans.operationType> </input>
+		</p>
+		-->
+		
+		<p>
+			<select ng-model=accountCtrl.newTrans.operationType 
+			ng-options="opType for opType in accountCtrl.operationTypes">
+			</select>
+		</p>
+
+		<a class="btn btn-primary" ng-click=accountCtrl.singleTrans()>Transact</a>
+		
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+

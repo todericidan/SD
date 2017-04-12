@@ -1,0 +1,21 @@
+
+<div class="login-form-1">
+	<p><label>Username:</label>
+	<input type="text" placeholder="username" ng-model=loginCtrl.username> </input> 
+	</p>
+	<br>
+	<p><label>Password:</label>
+	<input type="password" placeholder=password ng-model=loginCtrl.password></input>
+	</p>
+	<br>
+	<a class="btn btn-primary" ng-click = loginCtrl.submit()>Login</a></td>
+	
+	<div>
+	<p style="color:red;" ng-if="loginCtrl.credentials">
+	Bad credentials 
+	</p>
+	</div>
+	
+	
+	
+</div>
